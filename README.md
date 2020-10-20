@@ -18,8 +18,8 @@ First of all, you need to start RabbitMQ and PostgreSQL servers running on local
 <h2>How to run:</h2>
 
   - You can use rabbitmq-message-sender for communicate with Spring Boot service:
-      - Compile with "javac -cp amqp-client-5.7.1.jar Sender.java"
-      - Run with "java -cp .:amqp-client-5.7.1.jar:slf4j-api-1.7.26.jar:slf4j-simple-1.7.26.jar Sender "YourMessageHere""
+      - Compile with < javac -cp amqp-client-5.7.1.jar Sender.java >
+      - Run with < java -cp .:amqp-client-5.7.1.jar:slf4j-api-1.7.26.jar:slf4j-simple-1.7.26.jar Sender "YourMessageHere" >
   - Run main service with ./mvnw spring-boot:run in springboot_service/ directory.
   
  <h3> Main service port is :8081</h3>
