@@ -1,9 +1,6 @@
 package com.example.springbootpostgresqlrest.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "people")
@@ -14,9 +11,8 @@ public class Contact {
 	
 	public Contact() { }
 	
-	public Contact(String name) { this.name = name; }
-	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public long getId() {
 		return id;
 	}

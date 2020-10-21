@@ -1,8 +1,6 @@
 package com.example.springbootpostgresqlrest.controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import com.example.springbootpostgresqlrest.exception.ResourceNotFoundException;
 import com.example.springbootpostgresqlrest.model.Contact;
@@ -46,10 +44,10 @@ public class ContactController {
 	}
 
 	@PutMapping("/contact={id}")
-	public ResponseEntity<Contact> updateEmployee(@PathVariable(value = "id") Long employeeId,
+	public ResponseEntity<Contact> updateContact(@PathVariable(value = "id") Long contactId,
 												  @Validated @RequestBody Contact contactDetails) throws ResourceNotFoundException {
-		Contact contact = contactRepository.findById(employeeId)
-				.orElseThrow(() -> new ResourceNotFoundException("Contact not found for this id :: " + employeeId));
+		Contact contact = contactRepository.findById(contactId)
+				.orElseThrow(() -> new ResourceNotFoundException("Contact not found for this id :: " + contactId));
 
 		contact.setName(contactDetails.getName());
 		final Contact updatedContact = contactRepository.save(contact);
@@ -57,14 +55,12 @@ public class ContactController {
 	}
 
 	@DeleteMapping("/contact={id}")
-	public Map<String, Boolean> deleteContact(@PathVariable(value = "id") Long employeeId)
+	public String deleteContact(@PathVariable(value = "id") Long contactId)
 			throws ResourceNotFoundException {
-		Contact contact = contactRepository.findById(employeeId)
-				.orElseThrow(() -> new ResourceNotFoundException("Contact not found for this id :: " + employeeId));
+		Contact contact = contactRepository.findById(contactId)
+				.orElseThrow(() -> new ResourceNotFoundException("Contact not found for this id :: " + contactId));
 
 		contactRepository.delete(contact);
-		Map<String, Boolean> response = new HashMap<>();
-		response.put("deleted", Boolean.TRUE);
-		return response;
+		return "object with id <" + contactId + "> deleted";
 	}
 }
