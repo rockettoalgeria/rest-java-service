@@ -3,7 +3,7 @@ package com.example.springbootpostgresqlrest.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "people")
+@Table(name = "contacts")
 public class Contact {
 
 	private long id;
